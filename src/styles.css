@@ -2987,3 +2987,203 @@ button:disabled {
     transition-duration: 0.01ms !important;
   }
 }
+/* DormDish Design A — Minimal Pulse */
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #f7f8f5;
+  color: #24251f;
+}
+
+.splash-screen.is-exiting {
+  pointer-events: none;
+  animation: splashExit 0.5s ease forwards;
+}
+
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transform: translateY(-2vh);
+}
+
+.splash-mark-wrap {
+  position: relative;
+  width: 144px;
+  height: 144px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 26px;
+}
+
+.splash-mark {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 82px;
+  height: 82px;
+  border-radius: 24px;
+  background: #e84335;
+  color: white;
+  box-shadow:
+    0 12px 28px rgba(232, 67, 53, 0.18),
+    0 4px 10px rgba(232, 67, 53, 0.12);
+  opacity: 0;
+  transform: scale(0.82);
+  animation:
+    splashLogoIn
+    0.55s
+    cubic-bezier(0.2, 0.85, 0.3, 1.08)
+    0.12s
+    forwards;
+}
+
+.splash-ring {
+  position: absolute;
+  z-index: 1;
+  width: 92px;
+  height: 92px;
+  border: 1.5px solid rgba(232, 67, 53, 0.16);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.65);
+  animation: splashPulse 1.85s ease-out infinite;
+}
+
+.splash-ring-one {
+  animation-delay: 0.45s;
+}
+
+.splash-ring-two {
+  animation-delay: 0.82s;
+}
+
+.splash-ring-three {
+  animation-delay: 1.19s;
+}
+
+.splash-wordmark {
+  font-family: Manrope, sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -2.6px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: splashWordIn 0.45s ease 0.64s forwards;
+}
+
+.splash-wordmark span {
+  color: #e84335;
+}
+
+.splash-tagline {
+  margin: 10px 0 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #85877f;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: splashTaglineIn 0.4s ease 0.92s forwards;
+}
+
+@keyframes splashLogoIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+
+  72% {
+    opacity: 1;
+    transform: scale(1.045);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes splashPulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.72);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.75);
+  }
+}
+
+@keyframes splashWordIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splashTaglineIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splashExit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.015);
+  }
+}
+/* Force DormDish splash animation to remain visible */
+.splash-screen .splash-mark {
+    animation-duration: 0.55s !important;
+    animation-delay: 0.12s !important;
+    animation-iteration-count: 1 !important;
+}
+
+.splash-screen .splash-ring {
+    animation-duration: 1.85s !important;
+    animation-iteration-count: infinite !important;
+}
+
+.splash-screen .splash-wordmark {
+    animation-duration: 0.45s !important;
+    animation-delay: 0.64s !important;
+    animation-iteration-count: 1 !important;
+}
+
+.splash-screen .splash-tagline {
+    animation-duration: 0.4s !important;
+    animation-delay: 0.92s !important;
+    animation-iteration-count: 1 !important;
+}
+
+.splash-screen.is-exiting {
+    animation-duration: 0.5s !important;
+    animation-iteration-count: 1 !important;
+}

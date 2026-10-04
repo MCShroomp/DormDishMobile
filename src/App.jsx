@@ -45,6 +45,7 @@ import { ProfilePage } from './pages/ProfilePage.jsx';
 import { ProductModal } from './components/ProductModal.jsx';
 import { CartDrawer } from './components/CartDrawer.jsx';
 import { CheckoutModal } from './components/CheckoutModal.jsx';
+import { SplashScreen } from './components/SplashScreen.jsx';
 
 import './styles.css';
 
@@ -93,6 +94,7 @@ export default function App() {
     );
 
     const [orderPlaced, setOrderPlaced] = useState(null);
+    const [showSplash, setShowSplash] = useState(true);
 
     useEffect(() => {
         localStorage.setItem(
@@ -288,6 +290,13 @@ export default function App() {
     }
 
     return (
+    <>
+        {showSplash && (
+            <SplashScreen
+                onComplete={() => setShowSplash(false)}
+            />
+        )}
+
         <div
             className={`app-shell ${
                 dark ? 'dark' : ''
@@ -740,6 +749,7 @@ export default function App() {
                     {toast}
                 </div>
             )}
-        </div>
+                </div>
+    </>
     );
 }
